@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
@@ -104,6 +101,8 @@ namespace IST_Password_app.ViewModel
 
         /*-----------------------------------------------------------------------------------------*/
 
+        #region Events        
+
         public void EndInputTimeEvent(object source, ElapsedEventArgs e)
         {
             _inputTimer.Close();
@@ -126,6 +125,8 @@ namespace IST_Password_app.ViewModel
             IsPasswordFieldEnabled = false;
             _inputProhibitionTimer = null;
         }
+
+        #endregion
 
         /*-----------------------------------------------------------------------------------------*/
 
@@ -165,7 +166,7 @@ namespace IST_Password_app.ViewModel
             _passwordTimer.Enabled = true;
         }
 
-
+        /*-----------------------------------------------------------------------------------------*/
 
         public MainViewModel()
         {
