@@ -78,11 +78,11 @@ namespace IST_Password_app.ViewModel
         {
             if (string.IsNullOrEmpty(PasswordExample)
                 || string.IsNullOrEmpty(Password)
-                || _buttonAllowed)
+                || !_buttonAllowed)
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         private void OnAuthenticateCommandExecuted(object p)
@@ -105,22 +105,22 @@ namespace IST_Password_app.ViewModel
 
         public void EndInputTimeEvent(object source, ElapsedEventArgs e)
         {
-            _inputTimer.Close();
+            _inputTimer = null;
             _buttonAllowed = false;
             IsPasswordFieldEnabled = false;
-            StartNewInputProhibitionTimer();
+           StartNewInputProhibitionTimer();
         }
 
         public void EndInputProhibitionTimerEvent(object source, ElapsedEventArgs e) 
         {
-            _inputProhibitionTimer.Close();
+            _inputProhibitionTimer = null;
             IsPasswordFieldEnabled = true;
             _buttonAllowed = true;
         }
 
         public void EndPasswordTimerEvent(object source, ElapsedEventArgs e)
         {
-            _passwordTimer.Close();
+            _passwordTimer = null;
             _buttonAllowed = false;
             IsPasswordFieldEnabled = false;
             _inputProhibitionTimer = null;
@@ -164,6 +164,8 @@ namespace IST_Password_app.ViewModel
             };
             _passwordTimer.Elapsed += new ElapsedEventHandler(EndPasswordTimerEvent);
             _passwordTimer.Enabled = true;
+            _buttonAllowed = true;
+            IsPasswordFieldEnabled = true;
         }
 
         /*-----------------------------------------------------------------------------------------*/

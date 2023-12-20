@@ -20,6 +20,7 @@
     <Grid>
         <TextBox Text="{Binding PasswordExample, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="200" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignTextBox}"/>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Password" FontSize="15"/>
             <StackPanel Orientation="Horizontal">
                 <TextBox 
                     Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
